@@ -17,7 +17,8 @@ Each project is a sample work to demonstrate my skills, and while they are not c
   - User authentication (login, signup, logout)  
   - CRUD operations for restaurants and menu items  
   - Basic order management  
-  - Admin panel customization  
+  - Admin panel customization
+  - **Known issue**: The project isn’t split into multiple apps; everything is in one app
 - **Available in the `Restaurant-Django` branch.**
 
 ---
