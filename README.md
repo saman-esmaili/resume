@@ -7,6 +7,7 @@ Each project is a sample work to demonstrate my skills, and while they are not c
 ## 1. **Practice**
 - All the exercises I’ve done during the training course.  
 - There is a separate repository called **"Practice"**.
+- Address: https://github.com/saman-esmaili/practice
 
 ---
 
