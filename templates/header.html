@@ -1,0 +1,133 @@
+{% load static %}
+<header class="header-wrap style1">
+    <div class="header-top">
+        <div class="container">
+            <div class="close-header-top xl-none">
+                <button type="button"><i class="las la-times"></i></button>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-xl-10 col-lg-12">
+                    <div class="header-top-left">
+                        <div class="contact-item">
+                            <i class="flaticon-wall-clock"></i>
+                            <p>دوشنبه - جمعه[8:00عصر - 10:00صبح]</p>
+                        </div>
+                        <div class="contact-item">
+                            <i class="flaticon-phone-call"></i>
+                            <a href="tel:13454567877">800-323-4567</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="flaticon-voucher"></i>
+                            <p>تخفیف <strong>20%</strong>تنها برای <span>همبرگر</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-lg-12">
+                    <a href="reservation.html" class="btn style1 xl-none">رزرو کردن <i
+                            class="flaticon-right-arrow-2"></i> </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container ">
+        <div class="header-bottom">
+            <div class="row align-items-center">
+                <div class="col-xl-3 col-lg-6 col-md-6 col-5">
+                    <a href="index.html" class="logo"><img src="{% static 'assets/img/logo-white.png' %}"
+                                                           alt="Image"></a>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-7">
+                    <div class="main-menu-wrap">
+                        <div class="menu-close xl-none">
+                            <a href="javascript:void(0)"><i class="las la-times"></i></a>
+                        </div>
+                        <div id="menu">
+                            <ul class="main-menu list-style">
+                                {% if user.is_authenticated and user.is_superuser %}
+                                    <li>
+                                        <a class="" href="{% url 'admin_dashboard' %}">کاربران</a>
+                                    </li>
+                                    <li>
+                                        <a class="" href="{% url 'meal_list' %}">لیست غذا ها</a>
+                                    </li>
+                                {% endif %}
+                                {% if page == 'index' %}
+                                    <li>
+                                        <a class="active" href="{% url 'index' %}">خانه</a>
+                                    </li>
+                                {% else %}
+                                    <li>
+                                        <a href="{% url 'index' %}">خانه</a>
+                                    </li>
+                                {% endif %}
+                                {% if page == 'menu' %}
+                                    <li>
+                                        <a href="{% url 'menu' %}" class="active">منوی غذا</a>
+                                    </li>
+                                {% else %}
+                                    <li>
+                                        <a href="{% url 'menu' %}">منوی غذا</a>
+                                    </li>
+                                {% endif %}
+                                {% if page == 'login' %}
+                                    <li>
+                                        <a href="{% url 'login' %}" class="active">ورود</a>
+                                    </li>
+                                {% else %}
+                                    <li>
+                                        {% if not user.is_authenticated %}
+                                            <a href="{% url 'login' %}">ورود</a>
+                                            </li>
+                                        {% endif %}
+                                {% endif %}
+                                {% if page == 'contact' %}
+                                    <li>
+                                        <a href="{% url 'contact' %}" class="active">تماس با ما</a>
+                                    </li>
+                                {% else %}
+                                    <li>
+                                        <a href="{% url 'contact' %}">تماس با ما</a>
+                                    </li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="mobile-bar-wrap">
+                        <a href="{% url 'cart' %}" class="shopcart  xl-none">
+                            <i class="las la-shopping-cart"></i>
+                            {% if user.is_authenticated %}
+                                <span>{{ request.session.number_food }}</span>
+                            {% endif %}
+                        </a>
+                        <div class="mobile-top-bar xl-none">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div class="mobile-menu xl-none">
+                            <a href="javascript:void(0)"><i class="las la-bars"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 lg-none">
+                    <div class="header-bottom-right">
+                        <a href="{% url 'cart' %}" class="shopcart">
+                            <i class="las la-shopping-cart"></i>
+                            {% if user.is_authenticated %}
+                                <span>{{ request.session.number_food }}</span>
+                            {% endif %}
+                        </a>
+                        {% if user.is_authenticated %}
+                            <a href="{% url 'exit' %}" class="btn style1">خروج<i class="flaticon-right-arrow-2"></i>
+                            </a>
+                        {% else %}
+                            <a href="{% url 'signup' %}" class="btn style1">ثبت نام<i
+                                    class="flaticon-right-arrow-2"></i></a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

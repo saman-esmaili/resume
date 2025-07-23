@@ -1,0 +1,66 @@
+{% extends 'template.html' %}
+{% load static %}
+{% block content %}
+
+    <div class="content-wrapper">
+        <div class="breadcrumb-wrap bg-f br-1">
+            <div class="overlay bg-black op-9"></div>
+            <img src="{% static 'assets/img/shape-1.png' %}" alt="Image" class="br-shape-1">
+            <img src="{% static 'assets/img/shape-2.png' %}" alt="Image" class="br-shape-2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="breadcrumb-title">
+                            <h2>لیست کاربران</h2>
+                            <ul class="breadcrumb-menu list-style">
+                                <li><a href="{% url 'index' %}">خانه </a></li>
+                                <li>داشبورد ادمین</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <section class="wishlist-wrap ptb-100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 mb-20">
+                        <div class="wishlist-table ">
+                            <table class="table table-bordered">
+                                <thead>
+                                <tr>
+                                    <th scope="col">ردیف</th>
+                                    <th scope="col">آدرس ها</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for address in address %}
+                                <tr>
+                                    <td>
+                                        <div class="wh_item">
+                                            <div class="wh-item-info">
+                                                <h6>{{ forloop.counter }}</h6>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="wh_item">
+                                            <div class="wh-item-info">
+                                                <h5>{{ address.address }}</h5>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+{% endblock %}

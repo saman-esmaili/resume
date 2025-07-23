@@ -1,0 +1,14 @@
+{% extends 'template.html' %}
+{% load static %}
+{% block content %}
+    <div style="padding-top: 600px">
+        <div style="justify-items: center; align-items: center; justify-content: center;margin-bottom: 300px">
+            <p style="font-weight: bold"> ایا میخواهید <b style="color:tomato;">{{ food_selected.meal.name }}</b> را از منوی سفارشات خود حذف کنید؟</p>
+            <form method="post">
+                {% csrf_token %}
+                <button class="btn btn-outline-danger" type="submit">بله</button>
+                <button class="btn btn-outline-info"><a href="{% url 'cart' %}">بازگشت</a></button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

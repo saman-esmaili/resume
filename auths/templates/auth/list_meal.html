@@ -1,0 +1,136 @@
+{% extends 'template.html' %}
+{% load static %}
+{% block content %}
+    <div class="content-wrapper">
+
+        <div class="breadcrumb-wrap bg-f br-1">
+            <div class="overlay bg-black op-9"></div>
+            <img src="{% static 'assets/img/shape-1.png' %}" alt="Image" class="br-shape-1">
+            <img src="{% static 'assets/img/shape-2.png' %}" alt="Image" class="br-shape-2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="breadcrumb-title">
+                            <h2>لیست غذاها</h2>
+                            <ul class="breadcrumb-menu list-style">
+                                <li><a href="index.html">خانه </a></li>
+                                <li>لیست غذاها</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <section class="wishlist-wrap ptb-100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 mb-20">
+                        <div class="sidebar-widget search-box mb-30 w-50">
+                            <div class="form-group">
+                                <form action="{% url 'meal_list' %}" method="get">
+                                    <div style="gap: 5px;width: 450px">
+                                        <div style="margin-bottom: 9px">
+                                            {{ form.phrase }}
+                                        </div>
+                                        <div style="margin-bottom: 9px">
+                                            {{ form.low_price }}
+                                        </div>
+                                        <div style="margin-bottom: 9px">
+                                            {{ form.high_price }}
+                                        </div>
+                                    </div>
+                                    <div style="margin-right: 36px">
+                                        <button type="submit"><i class="flaticon-search"></i></button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="wishlist-table ">
+                            <table class="table table-bordered">
+                                <thead>
+                                <tr>
+                                    <th scope="col">ردیف</th>
+                                    <th scope="col">عکس</th>
+                                    <th scope="col">نام</th>
+                                    <th scope="col">توضیحات</th>
+                                    <th scope="col">قیمت</th>
+                                    <th scope="col">دسته بندی</th>
+                                    <th scope="col">تخفیف</th>
+                                    <th scope="col">عملیات</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for meal in meals %}
+                                    <tr>
+                                        <td>
+                                            <div class="wh_item">
+                                                <div class="wh-item-info">
+                                                    <h6>{{ forloop.counter }}</h6>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="wh_item">
+                                                <div class="wh-item-info">
+                                                    <img src="{{ meal.img_url.url }}" alt="عکس {{ meal.name }}">
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="wh_item">
+                                                <div class="wh-item-info">
+                                                    <h5>{{ meal.name }}</h5>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="wh_item">
+                                                <div class="wh-item-info">
+                                                    <h5>{{ meal.description }}</h5>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="wh_item">
+                                                <div class="wh-item-info">
+                                                    <h5>{{ meal.price }}</h5>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="wh_item">
+                                                <div class="wh-item-info">
+                                                    <h5>{{ meal.category }}</h5>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="wh_item">
+                                                <div class="wh-item-info">
+                                                    <h5>{{ meal.discount }}</h5>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="wh_item">
+                                                <div class="wh-item-info">
+                                                    <a href="{% url 'add_meal' %}"><i class="las la-plus  text-success"></i></a>
+                                                    <a href="{% url 'update_meal' meal.pk %}"><i class="las la-edit  text-info"></i></a>
+                                                    <a href="{% url 'delete_meal' meal.pk %}"><i
+                                                            class="las la-times  text-danger"></i></a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}

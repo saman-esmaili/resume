@@ -1,0 +1,251 @@
+{% extends 'template.html' %}
+{% load static %}
+{% block content %}
+
+    <div class="content-wrapper">
+
+        <div class="breadcrumb-wrap bg-f br-1">
+            <div class="overlay bg-black op-9"></div>
+            <img src="{% static 'assets/img/shape-1.png' %}" alt="Image" class="br-shape-1">
+            <img src="{% static 'assets/img/shape-2.png' %}" alt="Image" class="br-shape-2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="breadcrumb-title">
+                            <h2>منوی غذا</h2>
+                            <ul class="breadcrumb-menu list-style">
+                                <li><a href="{% url 'index' %}">خانه </a></li>
+                                <li>منوی غذا</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <section class="Shop-wrap ptb-100">
+            <div class="container">
+                <div class="row gx-5">
+                    <div class="col-xl-4 col-lg-12 order-xl-1 order-lg-2 order-md-2 order-2">
+                        {% if user.is_authenticated and user.is_superuser %}
+                            <a href="{% url 'add_meal' %}" class="btn w-50 mb-20" style="background-color: forestgreen;color: white">افزودن غذا</a>
+                        {% endif %}
+                        <div class="sidebar">
+                            <div class="sidebar-widget search-box">
+                                <h4>جستجو </h4>
+                                <div class="form-group">
+                                    <form action="{% url 'menu' %}" method="get">
+                                        {{ form.searchInput }}
+                                        <button type="submit"><i class="flaticon-search"></i></button>
+                                    </form>
+
+                                </div>
+                            </div>
+                            <div class="sidebar-widget categories">
+                                <h4>دسته بندی</h4>
+                                <div class="category-box">
+                                    <ul class="list-style">
+                                        <li><a href="shop-left-sidebar.html">ظروف<i class="flaticon-back"></i> </a></li>
+                                        <li><a href="shop-left-sidebar.html">آجیل و سبزیجات<i class="flaticon-back"></i>
+                                        </a></li>
+                                        <li><a href="shop-left-sidebar.html">اسموتی ها<i class="flaticon-back"></i> </a>
+                                        </li>
+                                        <li><a href="shop-left-sidebar.html">سبزیجات<i class="flaticon-back"></i> </a>
+                                        </li>
+                                        <li><a href="shop-left-sidebar.html">حمل و نقل پیک<i class="flaticon-back"></i>
+                                        </a></li>
+                                        <li><a href="shop-left-sidebar.html">میوه های تازه<i class="flaticon-back"></i>
+                                        </a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="sidebar-widget new-product">
+                                <h4>تازه رسیده ها</h4>
+                                <div class="new-product-wrap">
+                                    <div class="new-product-item">
+                                        <a href="car-details.html" class="new-product-img">
+                                            <img src="{% static 'assets/img/blog/post-thumb-1.jpg' %}" alt="Iamge">
+                                        </a>
+                                        <div class="new-product-info">
+                                            <h6><a href="shop-details.html">پاستا باریستا</a></h6>
+                                            <div class="price">
+                                                <span>22000 تومان</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="new-product-item">
+                                        <a href="car-details.html" class="new-product-img">
+                                            <img src="{% static 'assets/img/blog/post-thumb-3.jpg' %}" alt="Iamge">
+                                        </a>
+                                        <div class="new-product-info">
+                                            <h6><a href="shop-details.html">ساندویچ مرغ</a></h6>
+                                            <div class="price"><span>32000 تومان</span>
+                                                <span class="discount">35000 تومان</span></div>
+                                        </div>
+                                    </div>
+                                    <div class="new-product-item">
+                                        <a href="car-details.html" class="new-product-img">
+                                            <img src="{% static 'assets/img/blog/post-thumb-2.jpg' %}" alt="Iamge">
+                                        </a>
+                                        <div class="new-product-info">
+                                            <h6><a href="car-details.html">سالسا توت فرنگی</a></h6>
+                                            <div class="price"><span>98000 تومان</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="sidebar-widget price-range-widget">
+                                <h4>فیلتر قیمت</h4>
+                                <div class="checkbox-item-wrap">
+                                    <div class="checkbox-item d-flex justify-content-between align-items-center">
+                                        <div class="checkbox style2">
+                                            <input type="checkbox" id="check_1">
+                                            <label for="check_1">10000 تومان - 100000 تومان</label>
+                                        </div>
+                                        <span>(11)</span>
+                                    </div>
+                                    <div class="checkbox-item d-flex justify-content-between align-items-center">
+                                        <div class="checkbox style2">
+                                            <input type="checkbox" id="check_2">
+                                            <label for="check_2">12000 تومان - 140000 تومان</label>
+                                        </div>
+                                        <span>(6)</span>
+                                    </div>
+                                    <div class="checkbox-item d-flex justify-content-between align-items-center">
+                                        <div class="checkbox style2">
+                                            <input type="checkbox" id="check_3">
+                                            <label for="check_3">14000 تومان - 180000 تومان</label>
+                                        </div>
+                                        <span>(15)</span>
+                                    </div>
+                                    <div class="checkbox-item d-flex justify-content-between align-items-center">
+                                        <div class="checkbox style2">
+                                            <input type="checkbox" id="check_4">
+                                            <label for="check_4">18000 تومان - 200000 تومان</label>
+                                        </div>
+                                        <span>(12)</span>
+                                    </div>
+                                    <div class="checkbox-item d-flex justify-content-between align-items-center">
+                                        <div class="checkbox style2">
+                                            <input type="checkbox" id="check_5">
+                                            <label for="check_5">22000 تومان - 250000 تومان</label>
+                                        </div>
+                                        <span>(9)</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="sidebar-widget tags">
+                                <h4>برچسب های محبوب </h4>
+                                <div class="tag-list">
+                                    <ul class="list-style">
+                                        <li><a href="blog-left-sidebar.html">غذا</a></li>
+                                        <li><a href="blog-left-sidebar.html">رستوران</a></li>
+                                        <li><a href="blog-left-sidebar.html">سلامت</a></li>
+                                        <li><a href="blog-left-sidebar.html">مرور </a></li>
+                                        <li><a href="blog-left-sidebar.html">فست فود</a></li>
+                                        <li><a href="blog-left-sidebar.html">تجارت</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-8 col-lg-12 order-xl-2 order-lg-1 order-md-1 order-1">
+                        <div class="row align-items-center mb-25">
+                            <div class="col-xl-6 col-lg-5 col-md-4">
+                                <div class="profuct-result">
+                                    <p>نمایش 10 از 120 محصول</p>
+                                </div>
+                            </div>
+                            <div class="col-xl-4 col-lg-4 col-md-4">
+                                <div class="filter-item-cat">
+                                    <select>
+                                        <option value="1">مرتب سازی بر اساس محبوب ترین</option>
+                                        <option value="2">مرتب سازی بر اساس بالا به پایین</option>
+                                        <option value="3">مرتب سازی بر اساس کم به زیاد</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-xl-2 col-lg-3 col-md-4">
+                                <div class="filter-item-num">
+                                    <select>
+                                        <option value="1">نمایش 10</option>
+                                        <option value="2">نمایش 20</option>
+                                        <option value="3">نمایش 30</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                        {% for meal in meals %}
+                            <div class="col-lg-6 col-md-6">
+                                <div class="feature-card style1">
+                                    <div class="feature-img">
+                                        <img src='{{ meal.img_url.url }}' alt="عکس {{ meal.name }}">
+                                    </div>
+                                    <div class="feature-info">
+                                        <h3 class="feature-title"><a href="shop-details.html">{{ meal.name }}</a>
+                                        </h3>
+                                        <div class="feature-meta">
+                                            <p class="feature-price">{{ meal.price }} تومان<span></span></p>
+                                        </div>
+                                        {% if user.is_authenticated %}
+                                        <a class="btn style2" href="cart.html"><i class="flaticon-shopping-bag-1"></i>افزودن
+                                            سبد خرید</a>
+                                        {% endif %}
+                                        <div class="discount-tag">
+                                            <img src="{% static 'assets/img/feature/circle-1.png' %}" alt="Image">
+                                            <p><span>تخفیف</span>
+                                                30%</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <div>
+                        {% if is_paginated %}
+                            <div class="page-navigation">
+                                <div class="row align-items-center">
+                                    <!-- Previous button -->
+                                    {% if page_obj.has_previous %}
+                                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 text-sm-start text-center smb-20">
+                                            <a href="?page={{ page_obj.previous_page_number }}" class="btn prev">صفحه
+                                                قبلی</a>
+                                        </div>
+                                    {% else %}
+                                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 text-sm-start text-center smb-20"></div>
+                                    {% endif %}
+
+                                    <!-- Page number buttons -->
+                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 text-center smb-20">
+                                        <ul class="page-nav list-style">
+                                            {% for page_num in paginator.page_range %}
+                                                {% if page_num == page_obj.number %}
+                                                    <li><a class="active" href="">{{ page_num }}</a></li>
+                                                {% else %}
+                                                    <li><a href="?page={{ page_num }}">{{ page_num }}</a></li>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+
+                                    <!-- Next button -->
+                                    {% if page_obj.has_next %}
+                                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 text-sm-end text-center">
+                                            <a href="?page={{ page_obj.next_page_number }}" class="btn next">صفحه
+                                                بعدی</a>
+                                        </div>
+                                    {% else %}
+                                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 text-sm-end text-center"></div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}

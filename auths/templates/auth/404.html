@@ -1,0 +1,43 @@
+{% extends 'template.html' %}
+{% load static %}
+{% block content %}
+
+    <div class="content-wrapper">
+
+        <div class="breadcrumb-wrap bg-f br-1">
+            <div class="overlay bg-black op-9"></div>
+            <img src="{% static 'assets/img/shape-1.png' %}" alt="Image" class="br-shape-1">
+            <img src="{% static 'assets/img/shape-2.png' %}" alt="Image" class="br-shape-2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="breadcrumb-title">
+                            <h2>404</h2>
+                            <ul class="breadcrumb-menu list-style">
+                                <li><a href="index.html">خانه </a></li>
+                                <li>404</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="error-wrap ptb-100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="error-content">
+                            <span class="trans_text v4">متاسفیم!</span>
+                            <h2>خطای 404</h2>
+                            <p>صفحه مورد نظر شما در دسترس نیست</p>
+                            <a href="{% url 'index' %}" class="btn style1">بازگشت به خانه</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

@@ -1,0 +1,140 @@
+{% extends 'template.html' %}
+{% load static %}
+{% block content %}
+
+    <div class="content-wrapper">
+        <div class="breadcrumb-wrap bg-f br-1">
+            <div class="overlay bg-black op-9"></div>
+            <img src="{% static 'assets/img/shape-1.png' %}" alt="Image" class="br-shape-1">
+            <img src="{% static 'assets/img/shape-2.png' %}" alt="Image" class="br-shape-2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="breadcrumb-title">
+                            <h2>لیست کاربران</h2>
+                            <ul class="breadcrumb-menu list-style">
+                                <li><a href="{% url 'index' %}">خانه </a></li>
+                                <li>داشبورد ادمین</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <section class="wishlist-wrap ptb-100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 mb-20">
+                        <div class="sidebar-widget search-box mb-30 w-50">
+                            <div class="form-group">
+                                <form action="{% url 'admin_dashboard' %}" method="get">
+                                    {{ form.search_user }}
+                                    <button type="submit"><i class="flaticon-search"></i></button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="wishlist-table ">
+                            <table class="table table-bordered text-center align-middle">
+                                <thead>
+                                <tr>
+                                    <th scope="col">ردیف</th>
+                                    <th scope="col">نام و نام خانوادگی</th>
+                                    <th scope="col">شماره همراه</th>
+                                    <th scope="col">آدرس</th>
+                                    <th scope="col">نوع</th>
+                                    <th scope="col">عملیات</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for user in users %}
+                                    <tr>
+                                        <td>
+                                            <div class="wh_item">
+                                                <div class="wh-item-info">
+                                                    <h6>{{ forloop.counter }}</h6>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="wh_item">
+                                                <div class="wh-item-info">
+                                                    <h5>{{ user.full_name }}</h5>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="wh_item">
+                                                <div class="wh-item-info">
+                                                    <h5>{{ user.mobile }}</h5>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="wh_item">
+                                                <div class="wh-item-info">
+                                                    <h5><a class="btn btn-outline-danger text-black"
+                                                           href="{% url 'user_address' user.pk %}">آدرس</a></h5>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="wh_item">
+                                                <div class="wh-item-info">
+                                                    <h5>{{ user.price_category }}</h5>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="wh_item">
+                                                <div class="wh-item-info">
+                                                    <h5><a class="btn btn-outline-danger text-black" href="{% url 'order_list' user.pk %}">لیست سفارشات</a></h5>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                            {% if is_paginated %}
+                                <div class="page-navigation">
+                                    <div class="row align-items-center">
+                                        {% if page_obj.has_previous %}
+                                            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 text-sm-start text-center smb-20">
+                                                <a href="?page={{ page_obj.previous_page_number }}" class="btn prev">صفحه
+                                                    قبلی</a>
+                                            </div>
+                                        {% else %}
+                                            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 text-sm-start text-center smb-20"></div>
+                                        {% endif %}
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 text-center smb-20">
+                                            <ul class="page-nav list-style">
+                                                {% for page_num in paginator.page_range %}
+                                                    {% if page_num == page_obj.number %}
+                                                        <li><a class="active" href="">{{ page_num }}</a></li>
+                                                    {% else %}
+                                                        <li><a href="?page={{ page_num }}">{{ page_num }}</a></li>
+                                                    {% endif %}
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                        {% if page_obj.has_next %}
+                                            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 text-sm-end text-center">
+                                                <a href="?page={{ page_obj.next_page_number }}" class="btn next">صفحه
+                                                    بعدی</a>
+                                            </div>
+                                        {% else %}
+                                            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 text-sm-end text-center"></div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+{% endblock %}

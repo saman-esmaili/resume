@@ -1,0 +1,177 @@
+{% extends 'template.html' %}
+{% load static %}
+{% block content %}
+    <div class="content-wrapper">
+
+        <div class="breadcrumb-wrap bg-f br-1">
+            <div class="overlay bg-black op-9"></div>
+            <img src="{% static 'assets/img/shape-1.png' %}" alt="Image" class="br-shape-1">
+            <img src="{% static 'assets/img/shape-2.png' %}" alt="Image" class="br-shape-2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="breadcrumb-title">
+                            <h2>سبد خرید</h2>
+                            <ul class="breadcrumb-menu list-style">
+                                <li><a href="index.html">خانه </a></li>
+                                <li>سبد خرید</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <section class="wishlist-wrap ptb-100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 mb-20">
+                        <div class="wishlist-table ">
+                            <table class="table table-bordered">
+                                <thead>
+                                <tr>
+                                    <th scope="col">محصول</th>
+                                    <th scope="col">تعداد</th>
+                                    <th scope="col">مجموع قیمت</th>
+                                    <th scope="col">حذف کردن</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for item in data %}
+                                    <tr>
+                                        <td>
+                                            <div class="wh_item">
+                                                <img src="{{ item.meal.img_url.url }}" alt="Image">
+                                                <div class="wh-item-info">
+                                                    <a href="shop-details.html">{{ item.meal.name }}</a>
+                                                    <p>{{ item.meal.description }}</p>
+                                                    <span>{{ item.meal.price_discount }}</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="wh_qty">
+                                                <div>
+                                                    {#                                                    class="product-quantity style2"#}
+                                                    <div>
+                                                        {#                                                         class="qtySelector"#}
+                                                        <form action="{% url 'update_quantity' %}" method="post">
+                                                            {% csrf_token %}
+                                                            <input type="hidden" name="txtOrderDetailId"
+                                                                   value="{{ item.id }}">
+                                                            <input type="submit" name="action" value="+">
+
+                                                            <input type="text" class="qtyValue"
+                                                                   value="{{ item.quantity }}" readonly/>
+
+                                                            <input type="submit" name="action" value="-">
+
+                                                            {#                                                            <span class="las la-minus"></span>#}
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <p class="wh-tem-price">{% widthratio item.meal.price_discount 1 item.quantity %}
+                                                تومان</p>
+                                        </td>
+                                        <td>
+                                            <a href="{% url 'delete_order_detail' item.pk %}"><i
+                                                    class="las la-times"></i></a>
+                                        </td>
+                                    </tr>
+                                {% empty %}
+                                    <tr>
+                                        <td colspan="2">سبد خرید شما خالی است.</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="checkout-details">
+                            <div class="content-box-title">
+                                <h4 class="mb-20">کد تخفیف</h4>
+                            </div>
+                            <div class="bill-details">
+                                <div class="subtotal-wrap">
+                                    <div class="subtotal-item">
+                                        <p>لورم ایپسوم به سادگی ساختار چاپ و متن را در بر می گیرد. لورم ایپسوم به مدت 40
+                                            سال استاندارد صنعت بوده است.</p>
+                                        <div class="form-group mb-0 w-100">
+                                            <form action="{% url 'discount' %}" method="post">
+                                                {% csrf_token %}
+                                                {% if request.session.discount_code %}
+                                                    <input class="w-100" type="text" placeholder="کد تخفیف شما"
+                                                           name="txtCode" value="{{ request.session.discount_code }}">
+                                                {% else %}
+                                                    <input class="w-100" type="text" placeholder="کد تخفیف شما"
+                                                           name="txtCode">
+                                                {% endif %}
+                                                <button type="submit">اعمال کد</button>
+                                            </form>
+                                        </div>
+                                        {% if messages %}
+                                            {% for message in messages %}
+                                                {% if 'cart' in message.tags %}
+                                                    {% if 'error' in message.tags %}
+                                                        <p class="text-danger">
+                                                            {{ message }}
+                                                        </p>
+                                                    {% else %}
+                                                        <p class="text-success">
+                                                            {{ message }}
+                                                        </p>
+                                                    {% endif %}
+                                                {% endif %}
+                                            {% endfor %}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="checkout-details smt-30">
+                            <div class="content-box-title">
+                                <h4 class="mb-20">صورت حساب کل</h4>
+                            </div>
+                            <div class="bill-details">
+                                <div class="subtotal-wrap">
+                                    <div class="subtotal-item">
+                                        <div class="subtotal-item-left">
+                                            <h6>زیرمجموعه</h6>
+                                        </div>
+                                        <div class="subtotal-item-right">
+                                            <span>{{ request.session.total_price }} تومان</span>
+                                        </div>
+                                    </div>
+                                    <div class="subtotal-item">
+                                        <div class="subtotal-item-left">
+                                            <p>کرایه حمل</p>
+                                        </div>
+                                        <div class="subtotal-item-right">
+                                            <p>0 تومان</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="total-wrap">
+                                    <h5>مجموع خرید</h5>
+                                    <span>{{ request.session.total_price }} تومان</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 mt-3">
+                                <a href="{% url 'complete_purchase' %}" class="btn style1 w-100 d-block">بررسی پرداخت<i
+                                        class="lar la-check-circle"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+{% endblock %}

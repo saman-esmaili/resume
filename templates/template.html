@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="HTML5,CSS3,HTML,Template,multi-page,Caban - Restaurant & Cafe HTML Template">
+    <meta name="description" content="Caban - Restaurant & Cafe HTML Template">
+    <meta name="author" content="Barat Hadian">
+
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.rtl.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/line-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/swiper-bundle.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/fancybox.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/aos.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/odometer-theme-default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/dark-theme.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/rtl.css' %}">
+    <title>Caban - قالب HTML کابان ، پوسته سایت رستوران و کافه</title>
+    <link rel="icon" type="image/png" href="{% static 'assets/img/favicon.png' %}">
+</head>
+<body>
+
+<div class="preloader js-preloader">
+    <img src="{% static 'assets/img/preloader.gif' %}" alt="Image">
+</div>
+
+
+<div class="switch-theme-mode">
+    <label id="switch" class="switch">
+        <input type="checkbox" onchange="toggleTheme()" id="slider">
+        <span class="slider round"></span>
+    </label>
+</div>
+
+
+<div class="page-wrapper ">
+    {% include 'header.html' %}
+    {% block content %}
+    {% endblock %}
+    {% include 'footer.html' %}
+</div>
+<a href="javascript:void(0)" class="back-to-top"><i class="las la-arrow-up"></i></a>
+<script src="{% static 'assets/js/jquery.min.js' %}"></script>
+<script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'assets/js/form-validator.min.js' %}"></script>
+<script src="{% static 'assets/js/contact-form-script.js' %}"></script>
+<script src="{% static 'assets/js/aos.js' %}"></script>
+<script src="{% static 'assets/js/swiper-bundle.min.js' %}"></script>
+<script src="{% static 'assets/js/jquery-magnific-popup.js' %}"></script>
+<script src="{% static 'assets/js/fancybox.js' %}"></script>
+<script src="{% static 'assets/js/jquery.appear.min.js' %}"></script>
+<script src="{% static 'assets/js/odometer.min.js' %}"></script>
+<script src="{% static 'assets/js/main.js' %}"></script>
+</body>
+</html>

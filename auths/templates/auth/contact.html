@@ -1,0 +1,180 @@
+{% extends 'template.html' %}
+{% load static %}
+{% block content %}
+
+    <div class="content-wrapper">
+
+        <div class="breadcrumb-wrap bg-f br-1">
+            <div class="overlay bg-black op-9"></div>
+            <img src="{% static 'assets/img/shape-1.png' %}" alt="Image" class="br-shape-1">
+            <img src="{% static 'assets/img/shape-2.png' %}" alt="Image" class="br-shape-2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="breadcrumb-title">
+                            <h2>تماس با ما</h2>
+                            <ul class="breadcrumb-menu list-style">
+                                <li><a href="index.html">خانه </a></li>
+                                <li>تماس با ما</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <section class="contact-wrap pt-100 pb-100">
+            <div class="container">
+                <div class="row gx-5">
+                    <div class="col-md-12">
+                        <div class="contact-form">
+                            <form action="php/form-process.php" class="form-wrap" id="contactForm">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label for="fname">نام</label>
+                                            <input type="text" name="fname" placeholder="نام*" id="fname" required
+                                                   data-error="لطفا نام خود را وارد کنید">
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label for="lname">نام خانوادگی</label>
+                                            <input type="text" name="lname" placeholder="نام خانوادگی*" id="lname"
+                                                   required data-error="لطفا نام خانوادگی خود را وارد کنید">
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label for="email">آدرس ایمیل</label>
+                                            <input type="email" name="email" id="email" required
+                                                   placeholder="آدرس ایمیل*" data-error="لطفا ایمیل خود را وارد کنید">
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label for="phone_number">شماره تلفن</label>
+                                            <input type="text" name="phone_number" placeholder="شماره تلفن"
+                                                   id="phone_number" required data-error="لطفا تلفن خود را وارد کنید">
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="form-group v1">
+                                            <label for="message">پیام شما</label>
+                                            <textarea name="message" id="message" placeholder="پیام شما.." cols="30"
+                                                      rows="10" required
+                                                      data-error="لطفا پیام خود را بنویسید"></textarea>
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="checkbox style2">
+                                            <input type="checkbox" id="test_1">
+                                            <label for="test_1">من موافقت می کنم که این وب سایت اطلاعات ارسالی من را
+                                                ذخیره کند</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <button type="submit" class="btn style1 w-100 d-block op-95 mt-20">ارسال پیام
+                                        </button>
+                                        <div id="msgSubmit" class="h3 text-center hidden"></div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="contact-wrap style3 bg-f contact-bg-2 ptb-100  contact-page">
+            <div class="container pos-rel">
+                <img src="{% static 'assets/img/contact/agent-1.png' %}" alt="Image" class="agent-img md-none">
+                <div class="section-title style6 text-center mb-30">
+                    <span>
+                    <img src="{% static 'assets/img/secion-shape-1.png' %}" alt="Image">
+                    تماس با ما
+                    <img src="{% static 'assets/img/secion-shape-2.png' %}" alt="Image">
+                    </span>
+                    <h2 class="text-white">مطمئن نیستید چه چیزی را سفارش دهید؟ <br> اکنون با ما تماس بگیرید</h2>
+                </div>
+                <div class="row">
+                    <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
+                        <div class="contact-btn">
+                            <a href="tel:880123654223" class="btn style1">تماس بگیر<i
+                                    class="flaticon-left-arrow"></i></a>
+                            <a href="contact.html" class="btn style3">ارتباط با ما<i
+                                    class="flaticon-left-arrow"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="contact-wrap style2 pb-100  contact-page2">
+            <div class="map-bg bg-f"></div>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <i class="flaticon-home"></i>
+                            </div>
+                            <div class="contact-info">
+                                <h4>موقعیت ما</h4>
+                                <p>ایران ، استان تهران ، میدان آزادی</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <i class="flaticon-mail"></i>
+                            </div>
+                            <div class="contact-info">
+                                <h4>ایمیل ما</h4>
+                                <a href="mailto: hello@caban.com"> hello@caban.com</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <i class="flaticon-phone-call"></i>
+                            </div>
+                            <div class="contact-info">
+                                <h4>تماس با ما</h4>
+                                <a href="tel:4434567890">+44 345 678 90</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <i class="flaticon-wall-clock-1"></i>
+                            </div>
+                            <div class="contact-info">
+                                <h4>ساعت های کاری</h4>
+                                <p>دوشنبه - جمعه</p>
+                                <p>8:00 صبح - 10:00 عصر</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 mt-30 text-center">
+                        <a href="contact.html" class="btn style1">مرور نقشه <i class="flaticon-left-arrow"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+{% endblock %}
