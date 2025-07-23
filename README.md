@@ -29,5 +29,5 @@ Each project is a sample work to demonstrate my skills, and while they are not c
   - JWT-based authentication  
   - Async endpoints  
   - Swagger and Redoc auto-generated docs  
-- **Available in the `Restaurant-FastAPI` branch.**
+- **Available in the `fastapi` branch.**
 
